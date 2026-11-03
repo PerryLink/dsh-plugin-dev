@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.2 (2026-11-03)
+- Align with DeepSeek Harness 0.2.2-alpha.3: require Node >=24.9.0.
+- Bump `dsh-plugin-tools` to 0.2.2.
+- Verified: `npm test` 10/10.
+
 ## 0.3.1 (2026-11-03)
 - `upgrade` delegates to `dsh-codemod`, not deprecated `dsh-plugin-upgrade`.
 
