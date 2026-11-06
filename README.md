@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-plugin-dev-flow-dark.svg">
-  <img src="docs/assets/dsh-plugin-dev-flow-light.svg" width="100%" alt="dsh-dev 分发流程：new 交给 dsh-plugin-start，check 交给 dsh-plugin-ready，tools 交给 dsh-plugin-tools，test 在临时 DSH_HOME 里做 add / dump-config / remove，submit 交给 entry-validate，upgrade 交给 dsh-codemod">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-plugin-dev-hero-zh-dark.webp">
+  <img src="docs/assets/dsh-plugin-dev-hero-zh-light.webp" width="100%" alt="dsh-plugin-dev：六个动作共用一条 dsh-dev 命令——四条转交家族工具，test 在临时 DSH_HOME 里跑 add / dump-config / remove，submit 逐级找检查器，统一 exit 0 / 1 / 2 / 3">
 </picture>
 
 # dsh-plugin-dev
@@ -36,6 +36,11 @@ npx dsh-plugin-dev --help  # 或者免安装直接试用
 `dsh-dev` 是 DSH 插件开发流程的统一入口：新建、自检、工具链、隔离冒烟、发布前检查、升级改造，六个动作共用一条命令。它自己几乎不实现这些能力——`new` 转交 `dsh-plugin-start`，`check` 转交 `dsh-plugin-ready`，`tools` 转交 `dsh-plugin-tools`，`upgrade` 只负责找到并调用 `dsh-codemod`；真正由本仓编排的是 `test` 与 `submit`。三个子工具作为普通 npm 依赖随包安装，所以全局装一次就有全部六个动作。
 
 包名叫 `dsh-plugin-dev`、命令叫 `dsh-dev`，这是刻意的：`dsh-primer` 已经占用了一个 `dsh-plugin-dev` 可执行文件，换个短名才能并存。也正因为它不是 DSH 插件——不挂载 profile、不需要 `cordis.patch.yml`、不在宿主进程里常驻——它只是一条普通的 Node 命令行工具，跑完就退出。
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-plugin-dev-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-plugin-dev-flow-v5-light.svg" width="100%" alt="dsh-plugin-dev 派发树：argv 入口分成两棵不等深的子树——左边四条转交（new / check / tools / upgrade），右边是本仓编排（test 的六步临时 DSH_HOME 链、submit 的五级检查器阶梯），最后汇入 process.exitCode 的 0 / 1 / 2 / 3">
+</picture>
 
 ## 三步上手
 
@@ -221,12 +226,12 @@ npm pack                          # 打包发布物
 | `src/evidence.js` | `dsh-evidence/1` 证据生成与转换 |
 | `src/vendor/` | 随包内置的 `entry-validate` 检查器 |
 | `test/` | `node --test` 用例 |
-| `scripts/gen-readme-assets.py` | 生成 hero 双版 SVG（Pillow + CJK 字体探测） |
+| `scripts/gen-readme-assets.py` | 生成 hero 双版 webp 与结构图 SVG（Pillow + CJK 字体探测） |
 
 配图由脚本程序化生成，可重复执行：
 
 ```sh
-python scripts/gen-readme-assets.py   # 写出 docs/assets/dsh-plugin-dev-flow-{light,dark}.svg
+python scripts/gen-readme-assets.py   # 写出 hero-{zh,en}-{light,dark}.webp 与 flow-v5-{light,dark}.svg
 ```
 
 ## 家族与致谢

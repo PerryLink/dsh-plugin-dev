@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-plugin-dev-flow-dark.svg">
-  <img src="docs/assets/dsh-plugin-dev-flow-light.svg" width="100%" alt="dsh-dev डिस्पैच प्रवाह: new → dsh-plugin-start, check → dsh-plugin-ready, tools → dsh-plugin-tools, test → अस्थायी DSH_HOME में add / dump-config / remove, submit → entry-validate, upgrade → dsh-codemod">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-plugin-dev-hero-en-dark.webp">
+  <img src="docs/assets/dsh-plugin-dev-hero-en-light.webp" width="100%" alt="dsh-plugin-dev: एक ही dsh-dev कमांड में छह क्रियाएँ — चार काम परिवार के टूल्स को, test अस्थायी DSH_HOME में add / dump-config / remove चलाता है, submit चेकर की सीढ़ी चढ़ता है, और अंत में exit 0 / 1 / 2 / 3">
 </picture>
 
 # dsh-plugin-dev
@@ -36,6 +36,11 @@ npx dsh-plugin-dev --help  # या बिना इंस्टॉल किए
 `dsh-dev` DSH प्लगइन विकास चक्र का एकल प्रवेश-द्वार है: स्कैफ़ोल्ड, प्रीफ़्लाइट, टूलचेन, अलग-थलग स्मोक टेस्ट, प्रकाशन-पूर्व जाँच और अपग्रेड — छह क्रियाएँ एक ही कमांड में। यह स्वयं इनमें से कुछ भी लगभग नहीं बनाता: `new` काम `dsh-plugin-start` को सौंपता है, `check` काम `dsh-plugin-ready` को, `tools` काम `dsh-plugin-tools` को, और `upgrade` केवल `dsh-codemod` खोजकर उसे कॉल करता है; इस रेपो का असली ऑर्केस्ट्रेशन `test` और `submit` हैं। तीनों उप-टूल सामान्य npm निर्भरताओं के रूप में साथ आते हैं, इसलिए एक ग्लोबल इंस्टॉल से छहों क्रियाएँ मिल जाती हैं।
 
 पैकेज का नाम `dsh-plugin-dev` और कमांड का नाम `dsh-dev` जानबूझकर अलग है: `dsh-primer` पहले से एक `dsh-plugin-dev` एक्ज़ीक्यूटेबल रखता है, और छोटा नाम दोनों को साथ चलने देता है। और चूँकि यह DSH प्लगइन नहीं है — कोई profile माउंट नहीं करता, `cordis.patch.yml` की ज़रूरत नहीं, होस्ट प्रोसेस में नहीं रहता — यह बस एक साधारण Node CLI है जो काम पूरा होते ही बंद हो जाती है।
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-plugin-dev-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-plugin-dev-flow-v5-light.svg" width="100%" alt="dsh-plugin-dev डिस्पैच ट्री: argv रूट दो अलग गहराई की उप-शाखाओं में बँटता है — बाईं ओर चार हस्तांतरण (new / check / tools / upgrade), दाईं ओर वे दो कमांड जो यह रिपॉज़िटरी खुद ऑर्केस्ट्रेट करता है (test की अस्थायी DSH_HOME में छह-चरणीय श्रृंखला और submit की पाँच-स्तरीय चेकर सीढ़ी); दोनों एक ही process.exitCode 0 / 1 / 2 / 3 लौटाते हैं">
+</picture>
 
 ## तीन चरणों में शुरुआत
 
@@ -221,12 +226,12 @@ npm pack                          # प्रकाशित tarball बना�
 | `src/evidence.js` | `dsh-evidence/1` का निर्माण और रूपांतरण |
 | `src/vendor/` | साथ शामिल `entry-validate` चेकर |
 | `test/` | `node --test` केस |
-| `scripts/gen-readme-assets.py` | हीरो के दोनों SVG बनाता है (Pillow + CJK फ़ॉन्ट प्रोब) |
+| `scripts/gen-readme-assets.py` | हीरो के webp और संरचना का SVG बनाता है (Pillow + CJK फ़ॉन्ट प्रोब) |
 
 चित्र प्रोग्राम द्वारा बनते हैं और दोबारा बनाए जा सकते हैं:
 
 ```sh
-python scripts/gen-readme-assets.py   # docs/assets/dsh-plugin-dev-flow-{light,dark}.svg लिखता है
+python scripts/gen-readme-assets.py   # hero-{zh,en}-{light,dark}.webp और flow-v5-{light,dark}.svg लिखता है
 ```
 
 ## परिवार और आभार

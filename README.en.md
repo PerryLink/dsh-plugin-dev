@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-plugin-dev-flow-dark.svg">
-  <img src="docs/assets/dsh-plugin-dev-flow-light.svg" width="100%" alt="dsh-dev dispatch flow: new → dsh-plugin-start, check → dsh-plugin-ready, tools → dsh-plugin-tools, test → add / dump-config / remove in a temp DSH_HOME, submit → entry-validate, upgrade → dsh-codemod">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-plugin-dev-hero-en-dark.webp">
+  <img src="docs/assets/dsh-plugin-dev-hero-en-light.webp" width="100%" alt="dsh-plugin-dev: six actions behind one dsh-dev command — four hand-offs to the family tools, test running add / dump-config / remove in a temp DSH_HOME, submit walking the checker ladder, all ending in exit 0 / 1 / 2 / 3">
 </picture>
 
 # dsh-plugin-dev
@@ -36,6 +36,11 @@ npx dsh-plugin-dev --help  # or run it without installing
 `dsh-dev` is the single entry point for the DSH plugin development loop: scaffold, preflight, toolchain, isolated smoke test, pre-release check, and upgrade all share one command. It barely implements any of that itself — `new` delegates to `dsh-plugin-start`, `check` to `dsh-plugin-ready`, `tools` to `dsh-plugin-tools`, and `upgrade` only locates and calls `dsh-codemod`; what this repo actually orchestrates is `test` and `submit`. The three sub-tools ship as ordinary npm dependencies, so one global install gives you all six actions.
 
 The package is called `dsh-plugin-dev` and the command is called `dsh-dev` on purpose: `dsh-primer` already owns a `dsh-plugin-dev` executable, so a shorter name lets both coexist. And because it is not a DSH plugin — it mounts no profile, needs no `cordis.patch.yml`, and never lives inside the host process — it is just a plain Node CLI that exits when done.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-plugin-dev-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-plugin-dev-flow-v5-light.svg" width="100%" alt="dsh-plugin-dev dispatch tree: one argv root splits into two subtrees of different depth — four hand-offs on the left (new / check / tools / upgrade) and the two commands this repo orchestrates on the right (test's six-step temp-DSH_HOME chain, submit's five-rung checker ladder); both return one process.exitCode 0 / 1 / 2 / 3">
+</picture>
 
 ## Three-step setup
 
@@ -221,12 +226,12 @@ Layout:
 | `src/evidence.js` | `dsh-evidence/1` generation and conversion |
 | `src/vendor/` | The vendored `entry-validate` checker |
 | `test/` | `node --test` cases |
-| `scripts/gen-readme-assets.py` | Generates both hero SVGs (Pillow + CJK font probe) |
+| `scripts/gen-readme-assets.py` | Generates the hero webp pair and the structure SVG (Pillow + CJK font probe) |
 
 Images are generated programmatically and can be regenerated:
 
 ```sh
-python scripts/gen-readme-assets.py   # writes docs/assets/dsh-plugin-dev-flow-{light,dark}.svg
+python scripts/gen-readme-assets.py   # writes hero-{zh,en}-{light,dark}.webp and flow-v5-{light,dark}.svg
 ```
 
 ## Family & credits

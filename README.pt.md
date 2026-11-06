@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-plugin-dev-flow-dark.svg">
-  <img src="docs/assets/dsh-plugin-dev-flow-light.svg" width="100%" alt="Fluxo de despacho do dsh-dev: new → dsh-plugin-start, check → dsh-plugin-ready, tools → dsh-plugin-tools, test → add / dump-config / remove em um DSH_HOME temporário, submit → entry-validate, upgrade → dsh-codemod">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-plugin-dev-hero-en-dark.webp">
+  <img src="docs/assets/dsh-plugin-dev-hero-en-light.webp" width="100%" alt="dsh-plugin-dev: seis ações em um único comando dsh-dev — quatro delegações às ferramentas da família, test executando add / dump-config / remove em um DSH_HOME temporário, submit percorrendo a escada de verificadores, e um único exit 0 / 1 / 2 / 3">
 </picture>
 
 # dsh-plugin-dev
@@ -36,6 +36,11 @@ npx dsh-plugin-dev --help  # ou experimente sem instalar
 `dsh-dev` é o ponto de entrada único do ciclo de desenvolvimento de plugins DSH: scaffold, preflight, cadeia de ferramentas, teste de fumaça isolado, checagem antes da publicação e atualização compartilham um só comando. Ele quase não implementa nada disso: `new` delega ao `dsh-plugin-start`, `check` ao `dsh-plugin-ready`, `tools` ao `dsh-plugin-tools`, e `upgrade` apenas localiza e chama o `dsh-codemod`; o que este repositório realmente orquestra é `test` e `submit`. As três subferramentas chegam como dependências npm comuns, então uma instalação global entrega as seis ações.
 
 O pacote se chama `dsh-plugin-dev` e o comando se chama `dsh-dev` de propósito: o `dsh-primer` já ocupa um executável `dsh-plugin-dev`, e um nome mais curto permite que os dois convivam. E como não é um plugin DSH — não monta profile, não precisa de `cordis.patch.yml` e não vive dentro do processo anfitrião — é apenas uma CLI Node comum, que encerra ao terminar.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-plugin-dev-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-plugin-dev-flow-v5-light.svg" width="100%" alt="Árvore de despacho do dsh-plugin-dev: a raiz argv se abre em duas subárvores de profundidades diferentes — quatro delegações à esquerda (new / check / tools / upgrade) e os dois comandos que este repositório orquestra à direita (a cadeia de seis passos do test em um DSH_HOME temporário e a escada de cinco níveis do submit); ambas retornam um process.exitCode 0 / 1 / 2 / 3">
+</picture>
 
 ## Instalação em três passos
 
@@ -221,12 +226,12 @@ Estrutura:
 | `src/evidence.js` | Geração e conversão de `dsh-evidence/1` |
 | `src/vendor/` | O verificador `entry-validate` embutido |
 | `test/` | Casos de `node --test` |
-| `scripts/gen-readme-assets.py` | Gera os dois SVG do hero (Pillow + sonda de fonte CJK) |
+| `scripts/gen-readme-assets.py` | Gera os hero em webp e o SVG de estrutura (Pillow + sonda de fonte CJK) |
 
 As imagens são geradas por programa e podem ser regeneradas:
 
 ```sh
-python scripts/gen-readme-assets.py   # escreve docs/assets/dsh-plugin-dev-flow-{light,dark}.svg
+python scripts/gen-readme-assets.py   # escreve hero-{zh,en}-{light,dark}.webp e flow-v5-{light,dark}.svg
 ```
 
 ## Família e créditos
