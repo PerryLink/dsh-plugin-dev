@@ -44,6 +44,11 @@ npx dsh-plugin-dev --help  # 或者免安装直接试用
 
 ## 三步上手
 
+
+![dsh-plugin-dev 真实终端运行](docs/assets/dsh-plugin-dev-demo.gif)
+
+*本仓库真实运行的动图回放（2026-11-21）。*
+
 1. **安装**（Node `>=24.9.0`）：
 
    ```sh

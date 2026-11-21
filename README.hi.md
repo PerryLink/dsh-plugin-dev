@@ -42,6 +42,11 @@ npx dsh-plugin-dev --help  # या बिना इंस्टॉल किए
   <img src="docs/assets/dsh-plugin-dev-flow-v5-light.svg" width="100%" alt="dsh-plugin-dev डिस्पैच ट्री: argv रूट दो अलग गहराई की उप-शाखाओं में बँटता है — बाईं ओर चार हस्तांतरण (new / check / tools / upgrade), दाईं ओर वे दो कमांड जो यह रिपॉज़िटरी खुद ऑर्केस्ट्रेट करता है (test की अस्थायी DSH_HOME में छह-चरणीय श्रृंखला और submit की पाँच-स्तरीय चेकर सीढ़ी); दोनों एक ही process.exitCode 0 / 1 / 2 / 3 लौटाते हैं">
 </picture>
 
+![dsh-plugin-dev का असली टर्मिनल रन](docs/assets/dsh-plugin-dev-demo.gif)
+
+*इस रिपॉज़िटरी के असली रन का एनिमेटेड रीप्ले (2026-11-21)।*
+
+
 ## तीन चरणों में शुरुआत
 
 1. **इंस्टॉल करें** (Node `>=24.9.0`):

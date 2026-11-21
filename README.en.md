@@ -44,6 +44,11 @@ The package is called `dsh-plugin-dev` and the command is called `dsh-dev` on pu
 
 ## Three-step setup
 
+
+![dsh-plugin-dev: real terminal run](docs/assets/dsh-plugin-dev-demo.gif)
+
+*Animated replay of a real run in this repository (2026-11-21).*
+
 1. **Install** (Node `>=24.9.0`):
 
    ```sh

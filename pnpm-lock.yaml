@@ -1,0 +1,44 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      dsh-plugin-ready:
+        specifier: 0.2.2
+        version: 0.2.2
+      dsh-plugin-start:
+        specifier: 0.2.1
+        version: 0.2.1
+      dsh-plugin-tools:
+        specifier: 0.2.2
+        version: 0.2.2
+
+packages:
+
+  dsh-plugin-ready@0.2.2:
+    resolution: {integrity: sha512-ORsvtQgqi17/HlJn4697UvwtWfleGTrUlDmOeNbpDeYMtCqRePYx0hkHsqEmo4ww391ngHrxgUMcWvDtuD8IWQ==}
+    engines: {node: '>=20'}
+    hasBin: true
+
+  dsh-plugin-start@0.2.1:
+    resolution: {integrity: sha512-p9o0KEyFmwsuznzlB69Jq9Bil1r/o/pjin6Fc+QrMfyfPAI78mUANGqOu8nt551HgJp8lquILxMBO1zPfQtUpg==}
+    engines: {node: '>=20'}
+    hasBin: true
+
+  dsh-plugin-tools@0.2.2:
+    resolution: {integrity: sha512-EtuTjFRNCw/ZbLDsHCDPN0xqYeMrHAPwQpY6lAskow8YoisojHIz7NQXWbedObcuwEZtuAx7COFevdZ/AbAesg==}
+    engines: {node: '>=20'}
+    hasBin: true
+
+snapshots:
+
+  dsh-plugin-ready@0.2.2: {}
+
+  dsh-plugin-start@0.2.1: {}
+
+  dsh-plugin-tools@0.2.2: {}

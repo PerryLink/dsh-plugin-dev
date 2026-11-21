@@ -42,6 +42,11 @@ El paquete se llama `dsh-plugin-dev` y el comando se llama `dsh-dev` a propósit
   <img src="docs/assets/dsh-plugin-dev-flow-v5-light.svg" width="100%" alt="Árbol de despacho de dsh-plugin-dev: la raíz argv se abre en dos subárboles de distinta profundidad — cuatro delegaciones a la izquierda (new / check / tools / upgrade) y los dos comandos que este repositorio orquesta a la derecha (la cadena de seis pasos de test en un DSH_HOME temporal y la escalera de cinco niveles de submit); ambos devuelven un process.exitCode 0 / 1 / 2 / 3">
 </picture>
 
+![dsh-plugin-dev: ejecución real de terminal](docs/assets/dsh-plugin-dev-demo.gif)
+
+*Repetición animada de una ejecución real de este repositorio (2026-11-21).*
+
+
 ## Instalación en tres pasos
 
 1. **Instala** (Node `>=24.9.0`):
